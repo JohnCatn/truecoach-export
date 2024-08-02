@@ -25,17 +25,9 @@ class Exercise extends Component {
        <div className="container">
         <div className="col-xs-12">
          {this.state.Exercises.map((exercise) => (
-          <div className="card" id={exercise.id}>
-            <div className="card-body">
-            <h4 className="card-title" dangerouslySetInnerHTML={ {__html: exercise.id + ': ' + exercise.exercise_name} } />
-              <h5 className="card-title" dangerouslySetInnerHTML={ {__html: exercise.description} } />
-              <h6 className="card-subtitle mb-2 text-muted">
                 <span>
-                {exercise.url}
+                 <a href={exercise.url}>Instruction Video</a>
                 </span>
-              </h6>
-            </div>
-          </div>
         ))} 
         </div>
        </div>

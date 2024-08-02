@@ -28,7 +28,7 @@ class Workout extends Component {
          {this.state.workoutItems.map((workoutItem) => (
           <div className="card" id={workoutItem.id}>
             <div className="card-body">
-            <h4 className="card-title" dangerouslySetInnerHTML={ {__html: workoutItem.name} } />
+            <h4 className="card-title" dangerouslySetInnerHTML={ {__html: workoutItem.name } }/>
               <h5 className="card-title" dangerouslySetInnerHTML={ {__html: workoutItem.info} } />
               <h6 className="card-subtitle mb-2 text-muted">
                 <span>

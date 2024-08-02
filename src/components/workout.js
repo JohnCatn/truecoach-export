@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Exercise from "./exercise";
+import { CCollapse, CButton } from '@coreui/react'
 
 class Workout extends Component {
   state = {
-    workoutItems: []
+    workoutItems: [],
+    visible: false
   }
   componentDidMount() {
     fetch(`./data/workouts/${this.props.workoutId}.json`,{
@@ -18,12 +20,17 @@ class Workout extends Component {
       console.log(`got workout ${this.props.workoutId}`);
       console.log(data);
       this.setState({ workoutItems: data.workout_items });
+      this.setState({ visible: false });
     })
     .catch(console.log)
   }
   render() {
     return (
        <div className="container">
+        <CButton color="primary" onClick={() => this.setState({ visible: !this.state.visible })}>
+          Show / Hide Details
+        </CButton>
+        <CCollapse visible={this.state.visible}>
         <div className="col-xs-12">
          {this.state.workoutItems.map((workoutItem) => (
           <div className="card" id={workoutItem.id}>
@@ -50,7 +57,9 @@ class Workout extends Component {
           </div>
         ))} 
         </div>
+        </CCollapse>
        </div>
+       
     );
   }
 }
